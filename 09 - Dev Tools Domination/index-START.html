@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [
+        { name: 'Snickers', age: 2 },
+        { name: 'hugo', age: 8 },
+      ];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      function makeGreen() {
+        const p = document.querySelector('p');
+        p.style.color = '#BADA55';
+        p.style.fontSize = '50px';
+      }
 
-    function makeGreen() {
+      // Regular
+      console.log('Hello!');
+
+      // Interpolated
+      console.log('Hello i am a %s String', 'poop');
+
+      // Styled
+      console.log('%c i am a styled Log', 'font-size: 20px; color: red;');
+
+      // warning!
+      console.warn('Oh Noooo!');
+
+      // Error :|
+      console.error('Shit!');
+
+      // Info
+      console.info('Im super cool!, but info does not work!');
+
+      // Testing
+      console.assert(1 === 2, 'That is wrong');
+      console.assert(1 === 1, 'That is wrong');
+
+      // clearing
+      // console.clear();
+
+      // Viewing DOM Elements
       const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      console.log(p);
+      console.dir(p);
 
-    // Regular
+      // Grouping together
+      dogs.forEach(dog => {
+        console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.groupEnd(`${dog.name}`);
+      });
 
-    // Interpolated
+      // counting
+      console.count('Gustav');
+      console.count('Gustav');
+      console.count('Zuzka');
+      console.count('Zuzka');
+      console.count('Gustav');
+      console.count('Gustav');
+      console.count('Gustav');
+      console.count('Gustav');
+      console.count('Zuzka');
+      console.count('Zuzka');
+      console.count('Zuzka');
+      console.count('Gustav');
 
-    // Styled
-
-    // warning!
-
-    // Error :|
-
-    // Info
-
-    // Testing
-
-    // clearing
-
-    // Viewing DOM Elements
-
-    // Grouping together
-
-    // counting
-
-    // timing
-
-  </script>
-</body>
+      // timing
+      console.time('fetch');
+      fetch('https://api.github.com/users/GustavArendd')
+        .then(data => data.json())
+        .then(data => {
+          console.log(data);
+          console.timeEnd('fetch');
+        });
+    </script>
+  </body>
 </html>
